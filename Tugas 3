@@ -1,0 +1,82 @@
+// Aircraft.java
+class Aircraft {
+    void fly() {
+        System.out.println("Flying an aircraft with " + wheels() + " wheels.");
+    }
+
+    void additionalMethod() {
+        System.out.println("This is an additional method in Aircraft class.");
+    }
+
+    int wheels() {
+        return 0;
+    }
+}
+
+// Kelas turunan dengan berbagai jenis pesawat
+class Jet extends Aircraft {
+    @Override
+    void fly() {
+        System.out.println("Flying a jet with " + wheels() + " wheels.");
+    }
+
+    @Override
+    int wheels() {
+        return 3;
+    }
+}
+
+class Helicopter extends Aircraft {
+    @Override
+    void fly() {
+        System.out.println("Flying a helicopter with " + wheels() + " wheels.");
+    }
+
+    // Timpa additionalMethod() di Helicopter saja
+    @Override
+    void additionalMethod() {
+        System.out.println("This is an overridden method in Helicopter class.");
+    }
+
+    @Override
+    int wheels() {
+        return 4;
+    }
+}
+
+class Glider extends Aircraft {
+    @Override
+    void fly() {
+        System.out.println("Flying a glider with " + wheels() + " wheels.");
+    }
+
+    @Override
+    int wheels() {
+        return 2;
+    }
+}
+
+// Menambahkan tipe pesawat baru
+class Drone extends Aircraft {
+    @Override
+    void fly() {
+        System.out.println("Flying a drone with " + wheels() + " wheels.");
+    }
+
+    @Override
+    int wheels() {
+        return 0;
+    }
+}
+
+// Main.java
+public class Main {
+    public static void main(String[] args) {
+        // Memverifikasi polimorfisme pada Aircraft
+        Aircraft[] aircrafts = { new Jet(), new Helicopter(), new Glider(), new Drone() };
+        for (Aircraft aircraft : aircrafts) {
+            aircraft.fly();
+            aircraft.additionalMethod(); // Memanggil metode additionalMethod() untuk setiap jenis pesawat
+        }
+    }
+}
